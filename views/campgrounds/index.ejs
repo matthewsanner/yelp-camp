@@ -1,14 +1,10 @@
 <% layout('layouts/boilerplate') %>
 <h1>All Campgrounds</h1>
-<div>
-    <a href="/campgrounds/new">Add Campground</a>
-</div>
-<ul>
-    <% for (let campground of campgrounds) {%>
+<% for (let campground of campgrounds) {%>
     <div class="card mb-3">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-fluid" alt="" src="<%=campground.image%>">
+                <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -28,5 +24,4 @@
             </div>
         </div>
     </div>
-    <% }%>
-</ul>
+<% }%>
