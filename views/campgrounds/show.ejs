@@ -11,7 +11,6 @@
                     <img src="<%= img.url %>" class="d-block w-100" alt="">
                 </div>
                 <% }) %>
-               
             </div>
             <% if(campground.images.length > 1) { %>
             <button class="carousel-control-prev" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="prev">
@@ -49,6 +48,7 @@
         </div>
     </div>
     <div class="col-6">
+        <div id='map' style='width: 400px; height: 300px;'></div>
         <% if(currentUser) { %>
         <h2>Leave a Review</h2>
         <!-- tell form not to html validate but instead use bootstrap validation because it's prettier -->
@@ -101,3 +101,9 @@
         <% } %>
     </div>
 </div>
+
+<script>
+    const mapToken = '<%- process.env.MAPBOX_TOKEN%>';
+    const campground = <%- JSON.stringify(campground) %>
+</script>
+<script src="/javascripts/showPageMap.js"></script>
