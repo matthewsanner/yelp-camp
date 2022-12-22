@@ -10,13 +10,14 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <!-- display flex, flex column changes from row default, 100 minimum height -->
 
 <body class="d-flex flex-column vh-100">
     <%- include('../partials/navbar') %>
     <!-- margin top 5 -->
-    <main class="container mt-5">
+    <main class="container mt-auto">
         <%- include('../partials/flash') %>
         <%- body %>
     </main>
