@@ -42,9 +42,6 @@
                 </form>
             </div>
             <% } %>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
         </div>
     </div>
     <div class="col-6">
@@ -104,6 +101,6 @@
 
 <script>
     const mapToken = '<%- process.env.MAPBOX_TOKEN%>';
-    const campground = <%- JSON.stringify(campground) %>
+    const campground = <% - JSON.stringify(campground) %>
 </script>
 <script src="/javascripts/showPageMap.js"></script>
