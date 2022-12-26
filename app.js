@@ -25,7 +25,7 @@ const reviewRoutes = require('./routes/reviews');
 
 const MongoStore = require('connect-mongo');
 
-const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 // change dbUrl to this on launch: process.env.DB_URL
 // original local address for mongo db 'mongodb://localhost:27017/yelp-camp'
 mongoose.connect(dbUrl);
@@ -47,9 +47,11 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
 
+const secret = process.env.SECRET || 'thisshouldbeabettersecret';
+
 const store = new MongoStore({
     mongoUrl: dbUrl,
-    secret: 'thisshouldbeabettersecret',
+    secret,
     touchAfter: 24 * 60 * 60 // doesn't update db if same for amount of seconds
 })
 
@@ -60,7 +62,7 @@ store.on('error', function (e) {
 const sessionConfig = {
     store: store, // or just store
     name: 'session',
-    secret: 'thisshouldbeabettersecret',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -169,6 +171,7 @@ app.use((err, req, res, next) => {
 //     res.send(camp);
 // })
 
-app.listen(3000, () => {
-    console.log('Serving on port 3000!')
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Serving on port ${port}!`)
 })
