@@ -349,6 +349,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# ADDED TO THIS PARTICULAR GITIGNORE
-# Don't include .env file which contains API keys for Cloudinary image uploads
+# Don't include .env file which contains API keys, passwords etc.
 .env
