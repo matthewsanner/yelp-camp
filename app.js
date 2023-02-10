@@ -25,7 +25,7 @@ const reviewRoutes = require('./routes/reviews');
 
 const MongoStore = require('connect-mongo');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = process.env.DB_URL;
 // change dbUrl to this on launch: process.env.DB_URL
 // original local address for mongo db 'mongodb://localhost:27017/yelp-camp'
 mongoose.connect(dbUrl);
@@ -47,7 +47,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
 
-const secret = process.env.SECRET || 'thisshouldbeabettersecret';
+const secret = process.env.SECRET;
 
 const store = new MongoStore({
     mongoUrl: dbUrl,
@@ -171,7 +171,7 @@ app.use((err, req, res, next) => {
 //     res.send(camp);
 // })
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 app.listen(port, () => {
     console.log(`Serving on port ${port}!`)
 })
